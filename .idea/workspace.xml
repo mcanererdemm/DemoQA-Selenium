@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="49474da1-e258-4ebb-a507-965fddd17a93" name="Changes" comment="İnit Commit" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="XML Properties File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/m-canererdem/DemoQA-Selenium.git",
+    "accountId": "60e38cba-3880-4aea-8b31-b9bf7e607586"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2ttIaEdzSMYtaPRBU0V0LzF3qdG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TestNG.C:/Users/cerdem/Desktop/Selenium Training/DemoqaAutomation/src/test/resources/TestNG.xml.executor": "Run",
+    "TestNG.Deneme.executor": "Run",
+    "TestNG.deneme1.gotoGoogleDotCom.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/cerdem/Desktop/Selenium Training/DemoqaAutomation/src/test/java/stepDefinitions",
+    "onboarding.tips.debug.path": "C:/Users/cerdem/Desktop/Selenium Training/DemoqaAutomation/src/main/java/org/example/Main.java",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\cerdem\Desktop\Selenium Training\DemoqaAutomation\src\test\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="TestNG.C:/Users/cerdem/Desktop/Selenium Training/DemoqaAutomation/src/test/resources/TestNG.xml">
+    <configuration name="C:/Users/cerdem/Desktop/Selenium Training/DemoqaAutomation/src/test/resources/TestNG.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="DemoqaAutomation" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/resources/TestNG.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Deneme" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="DemoqaAutomation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="pages.Deneme" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Deneme.gotoGoogleDotCom" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="DemoqaAutomation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="pages.Deneme" />
+      <option name="METHOD_NAME" value="gotoGoogleDotCom" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.C:/Users/cerdem/Desktop/Selenium Training/DemoqaAutomation/src/test/resources/TestNG.xml" />
+        <item itemvalue="TestNG.Deneme" />
+        <item itemvalue="TestNG.Deneme.gotoGoogleDotCom" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="49474da1-e258-4ebb-a507-965fddd17a93" name="Changes" comment="" />
+      <created>1741165008022</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741165008022</updated>
+    </task>
+    <task id="LOCAL-00001" summary="İnit Commit">
+      <option name="closed" value="true" />
+      <created>1741176779267</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1741176779267</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="İnit Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="İnit Commit" />
+  </component>
+</project>
