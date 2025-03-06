@@ -54,4 +54,34 @@ public class ElementsPageStepsDefinitions {
     public void verifySelectedCheckboxes() {
         elementsPage.verifySelectedCheckboxes();
     }
+
+    @And("Click Radio Button")
+    public void clickRadioButton() {
+        elementsPage.clickRadioButtonLink();
+    }
+
+    @When("Select a {string}<Impressive>{string}")
+    public void select_a_ımpressive(String string, String string2) {
+        elementsPage.selectAChoice("Impressive");
+    }
+
+    @Then("Verify Selection")
+    public void verifySelection() {
+        elementsPage.verifyRadioSelection();
+    }
+
+    @And("Click War Tables")
+    public void clickWarTables() {
+        elementsPage.clickWarTableLink();
+    }
+
+    @And("Provide personal cridentials and submit")
+    public void providePersonalCredentialsAndSubmit() {
+        elementsPage.provideWarTableCredential();
+    }
+
+    @Then("Verify added cridentials")
+    public void verifyAddedCredentials() {
+        elementsPage.verifyWarTableCredentials();
+    }
 }
