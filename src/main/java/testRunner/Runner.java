@@ -9,9 +9,8 @@ import util.DriverFactory;
 @CucumberOptions(
         features = {"src/test/java/features"},
         glue = {"util", "stepDefinitions"},
-        tags = "",
+        tags = "@NavigationSuite",
         plugin = {"summary", "pretty", "html:Reports/CucumberReports/Reports.html"}
 )
 public class Runner extends AbstractTestNGCucumberTests {
-    WebDriver driver = DriverFactory.getDriver();
 }
