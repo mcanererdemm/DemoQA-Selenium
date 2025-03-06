@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class ElementHelper {
 
@@ -52,5 +53,15 @@ public class ElementHelper {
     public boolean assertText(By key, String text) {
         String elementText = this.findElement(key).getText();
         return elementText.equals(text);
+    }
+
+    public void selectCheckBox(By key) {
+        if (!this.findElement(key).isSelected()) {
+            this.findElement(key).click();
+        }
+    }
+
+    public List<WebElement> findElements(By keys) {
+        return this.driver.findElements(keys);
     }
 }

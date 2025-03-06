@@ -4,7 +4,7 @@
     <parameter name="browser" value="Chrome"/>
     <test name="DemoQA Case1">
         <classes>
-            <class name="testRunner.Runner"/>
+            <class name="testRunner.TestRunner"/>
         </classes>
     </test>
 </suite>

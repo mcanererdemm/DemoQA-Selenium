@@ -9,7 +9,7 @@ import util.ElementHelper;
 
 import java.util.Properties;
 
-public class HomePage {
+public class ElementsPage {
     WebDriver driver = DriverFactory.getDriver();
     Properties properties = ConfigReader.getProperties();
     ElementHelper helper = new ElementHelper(driver);
@@ -25,6 +25,12 @@ public class HomePage {
     By resultEmail = By.xpath("//p[@id='email']");
     By resultCAddress = By.xpath("//p[@id='currentAddress']");
     By resultPAddress = By.xpath("//p[@id='permanentAddress']");
+    By checkboxLink = By.xpath("//span[normalize-space()='Check Box']");
+    By plusButton = By.xpath("//button[@title='Expand all']//*[name()='svg']");
+    By notesCheckbox = By.xpath("//span[contains(text(),'Notes')]");
+    By angularCheckbox = By.xpath("//span[contains(text(),'Angular')]");
+    By generalCheckbox = By.xpath("//span[contains(text(),'General')]");
+    By checkedCheckboxes = By.xpath("//*[@class=\"rct-icon rct-icon-check\"]");
 
     public void reachHomePage() {
         String currentURL = driver.getCurrentUrl();
@@ -54,5 +60,25 @@ public class HomePage {
         helper.assertText(resultEmail, "Email:ccc@ccc.com");
         helper.assertText(resultCAddress, "Current Address :Current Address");
         helper.assertText(resultPAddress, "Permananet Address :Permanent Address");
+    }
+
+    public void clickCheckboxLink() {
+        helper.click(checkboxLink);
+    }
+
+    public void plusButton() {
+        helper.click(plusButton);
+    }
+
+    public void selectThreeCheckboxes() {
+        helper.scrollDown(300);
+        helper.selectCheckBox(notesCheckbox);
+        helper.selectCheckBox(angularCheckbox);
+        helper.selectCheckBox(generalCheckbox);
+    }
+
+    public void verifySelectedCheckboxes() {
+        int checked = helper.findElements(checkedCheckboxes).size();
+        Assert.assertEquals(checked, 3);
     }
 }
