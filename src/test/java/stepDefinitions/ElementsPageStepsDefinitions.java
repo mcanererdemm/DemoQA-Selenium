@@ -164,4 +164,19 @@ public class ElementsPageStepsDefinitions {
     public void verifyDownloadedFile() {
         elementsPage.verifyDownloadedFile();
     }
+
+    @And("Click Dynamic Properties Links button")
+    public void clickDynamicPropertiesLinksButton() {
+        elementsPage.clickDynamicPropertiesButton();
+    }
+
+    @Then("Verify Color Change Button")
+    public void verifyColorChangeButton() {
+        elementsPage.verifyButtonColorChange();
+    }
+
+    @And("Verify Color Visible After {int} Seconds Button")
+    public void verifyColorVisibleAfterSecondsButton(int arg0) {
+        elementsPage.verifyVisibleElementAfter5Seconds();
+    }
 }

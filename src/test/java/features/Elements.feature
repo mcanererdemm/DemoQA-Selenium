@@ -80,3 +80,11 @@ Feature: DemoQA.com Functional Automation Testing
     And Click Upload Downlaoad Links button
     And Click Download Link
     Then Verify Downloaded File
+
+  @DynamicProperties
+  Scenario: Using Dynamic Properties feature
+    Given Reach demoqa home page
+    When Click Elements to reach elements page
+    And Click Dynamic Properties Links button
+    Then Verify Color Change Button
+    And Verify Color Visible After 5 Seconds Button

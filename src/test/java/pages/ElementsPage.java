@@ -3,19 +3,24 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import util.ConfigReader;
 import util.DriverFactory;
 import util.ElementHelper;
 
+import java.time.Duration;
 import java.util.Properties;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class ElementsPage {
     WebDriver driver = DriverFactory.getDriver();
     Properties properties = ConfigReader.getProperties();
     ElementHelper helper = new ElementHelper(driver);
+    WebDriverWait waiter = new WebDriverWait(driver, Duration.ofSeconds(20));
 
     By elementsButton = By.xpath("//div[@class='category-cards']//div[1]//div[1]//div[1]");
     By radioButton = By.xpath("//span[normalize-space()='Radio Button']");
@@ -62,7 +67,9 @@ public class ElementsPage {
     By brokenLinksVerifyText = By.xpath("//h3[normalize-space()='Status Codes']");
     By downloadUploadButton = By.xpath("//li[@id='item-7' and @class = \"btn btn-light \"]//span[contains(text(),\"Upload and Download\")]");
     By downloadUploadlink = By.xpath("//a[@id='downloadButton']");
-
+    By colorChangeButton = By.xpath("//button[@id='colorChange']");
+    By visibleAfter5Button = By.xpath("//button[@id='visibleAfter']");
+    By dynamicPropertiesButton = By.xpath("//div[@class='element-list collapse show']//li[@id='item-8']");
 
 
     public void reachHomePage() {
@@ -248,5 +255,19 @@ public class ElementsPage {
 
     public void verifyDownloadedFile() {
         helper.isFileDownloaded("src/test/resources/", "sampleFile.jpeg");
+    }
+
+    public void clickDynamicPropertiesButton() {
+        helper.click(dynamicPropertiesButton);
+    }
+
+    public void verifyButtonColorChange() {
+        boolean result = waiter.until(ExpectedConditions.attributeContains(colorChangeButton, "class", "mt-4 text-danger btn btn-primary"));
+        assertTrue(result);
+    }
+
+    public void verifyVisibleElementAfter5Seconds() {
+        boolean result = waiter.until(ExpectedConditions.visibilityOfElementLocated(visibleAfter5Button)).isDisplayed();
+        assertTrue(result);
     }
 }
