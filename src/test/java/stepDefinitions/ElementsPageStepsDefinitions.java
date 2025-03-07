@@ -109,4 +109,29 @@ public class ElementsPageStepsDefinitions {
     public void verifyButtonClicks() {
         elementsPage.verifyButtonClicks();
     }
+
+    @And("Click Links button")
+    public void clickLinksButton() {
+        elementsPage.clickLinksPage();
+    }
+
+    @And("Click HomeDtej{int} link")
+    public void clickHomeDtejLink(int arg0) {
+        elementsPage.clickLinkOne("HomeDtej4");
+    }
+
+    @Then("Verify new tab")
+    public void verifyNewTab() {
+        elementsPage.verifyLinksNewPage();
+    }
+
+    @And("Click Not Found link")
+    public void clickNotFoundLink() {
+        elementsPage.clickNotFoundLink();
+    }
+
+    @Then("Verify {string} message")
+    public void verifyMessage(String arg0) {
+        elementsPage.verifyNotFoundMessage();
+    }
 }

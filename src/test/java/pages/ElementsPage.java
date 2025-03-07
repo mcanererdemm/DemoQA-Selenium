@@ -10,6 +10,8 @@ import util.ElementHelper;
 
 import java.util.Properties;
 
+import static org.testng.Assert.assertEquals;
+
 public class ElementsPage {
     WebDriver driver = DriverFactory.getDriver();
     Properties properties = ConfigReader.getProperties();
@@ -51,6 +53,10 @@ public class ElementsPage {
     By rightClickButtonMessage = By.xpath("//p[@id='rightClickMessage']");
     By thirdClickButton = By.xpath("//div[@class = \"col-12 mt-4 col-md-6\"]//div/div[3]//button[1]");
     By thirdClickButtonMessage = By.xpath("//p[@id='dynamicClickMessage']");
+    By linksButton = By.xpath("//span[normalize-space()='Links']");
+    By homeBZY6wLink = By.xpath("//a[@id='dynamicLink']");
+    By notFoundLink = By.xpath("//a[@id='invalid-url']");
+    By notFoundLinkMessage = By.xpath("//p[@id='linkResponse']");
 
 
     public void reachHomePage() {
@@ -179,5 +185,33 @@ public class ElementsPage {
         Assert.assertTrue((firstButton && secondButton && thirdButton));
     }
 
+    public void clickLinksPage() {
+        helper.click(linksButton);
+    }
 
+    public void clickLinkOne(String text) {
+        if (text.equals("HomeDtej4")) {
+            helper.click(homeBZY6wLink);
+        }
+    }
+
+    public void verifyLinksNewPage() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        Object[] windowHandles = driver.getWindowHandles().toArray();
+        driver.switchTo().window((String) windowHandles[1]);
+        String title = driver.getTitle();
+        assertEquals(title, "DEMOQA");
+    }
+
+    public void clickNotFoundLink() {
+        helper.click(notFoundLink);
+    }
+
+    public void verifyNotFoundMessage() {
+        helper.assertText(notFoundLinkMessage, "Link has responded with staus 404 and status text Not Found");
+    }
 }

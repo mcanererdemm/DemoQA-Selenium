@@ -48,3 +48,19 @@ Feature: DemoQA.com Functional Automation Testing
     And Right Click second button
     And Click third button
     Then Verify button clicks
+
+  @Links
+  Scenario: Using links feature
+    Given Reach demoqa home page
+    When Click Elements to reach elements page
+    And Click Links button
+    And Click HomeDtej4 link
+    Then Verify new tab
+
+  @Links
+  Scenario: Using links feature
+    Given Reach demoqa home page
+    When Click Elements to reach elements page
+    And Click Links button
+    And Click Not Found link
+    Then Verify "Link has responded with staus 404 and status text Not Found" message
