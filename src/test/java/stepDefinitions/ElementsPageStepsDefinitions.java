@@ -149,4 +149,19 @@ public class ElementsPageStepsDefinitions {
     public void verifyStatusCodesMessage() {
         elementsPage.verifyBrokenLink();
     }
+
+    @And("Click Upload Downlaoad Links button")
+    public void clickUploadDownlaoadLinksButton() {
+        elementsPage.clickUploadDonwloadButton();
+    }
+
+    @And("Click Download Link")
+    public void clickDownloadLink() {
+        elementsPage.clickDownloadLink();
+    }
+
+    @Then("Verify Downloaded File")
+    public void verifyDownloadedFile() {
+        elementsPage.verifyDownloadedFile();
+    }
 }

@@ -60,6 +60,9 @@ public class ElementsPage {
     By brokenLinksButton = By.xpath("//span[normalize-space()='Broken Links - Images']");
     By brokenLinksBrokenlinkText = By.xpath("//a[normalize-space()='Click Here for Broken Link']");
     By brokenLinksVerifyText = By.xpath("//h3[normalize-space()='Status Codes']");
+    By downloadUploadButton = By.xpath("//li[@id='item-7' and @class = \"btn btn-light \"]//span[contains(text(),\"Upload and Download\")]");
+    By downloadUploadlink = By.xpath("//a[@id='downloadButton']");
+
 
 
     public void reachHomePage() {
@@ -233,5 +236,17 @@ public class ElementsPage {
             throw new RuntimeException(e);
         }
         helper.assertText(brokenLinksVerifyText, "Status Codes");
+    }
+
+    public void clickUploadDonwloadButton() {
+        helper.click(downloadUploadButton);
+    }
+
+    public void clickDownloadLink() {
+        helper.click(downloadUploadlink);
+    }
+
+    public void verifyDownloadedFile() {
+        helper.isFileDownloaded("src/test/resources/", "sampleFile.jpeg");
     }
 }

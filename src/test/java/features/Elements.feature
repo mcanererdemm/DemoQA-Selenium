@@ -72,3 +72,11 @@ Feature: DemoQA.com Functional Automation Testing
     And Click Broken Links button
     And Click Broken Link
     Then Verify <Status Codes> message
+
+  @UploadDownload
+  Scenario: Using Broken Links feature
+    Given Reach demoqa home page
+    When Click Elements to reach elements page
+    And Click Upload Downlaoad Links button
+    And Click Download Link
+    Then Verify Downloaded File
