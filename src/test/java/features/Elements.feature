@@ -64,3 +64,11 @@ Feature: DemoQA.com Functional Automation Testing
     And Click Links button
     And Click Not Found link
     Then Verify "Link has responded with staus 404 and status text Not Found" message
+
+  @BrokenLinks
+  Scenario: Using Broken Links feature
+    Given Reach demoqa home page
+    When Click Elements to reach elements page
+    And Click Broken Links button
+    And Click Broken Link
+    Then Verify <Status Codes> message

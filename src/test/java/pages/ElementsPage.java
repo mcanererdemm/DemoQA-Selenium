@@ -57,6 +57,9 @@ public class ElementsPage {
     By homeBZY6wLink = By.xpath("//a[@id='dynamicLink']");
     By notFoundLink = By.xpath("//a[@id='invalid-url']");
     By notFoundLinkMessage = By.xpath("//p[@id='linkResponse']");
+    By brokenLinksButton = By.xpath("//span[normalize-space()='Broken Links - Images']");
+    By brokenLinksBrokenlinkText = By.xpath("//a[normalize-space()='Click Here for Broken Link']");
+    By brokenLinksVerifyText = By.xpath("//h3[normalize-space()='Status Codes']");
 
 
     public void reachHomePage() {
@@ -213,5 +216,22 @@ public class ElementsPage {
 
     public void verifyNotFoundMessage() {
         helper.assertText(notFoundLinkMessage, "Link has responded with staus 404 and status text Not Found");
+    }
+
+    public void clickBrokenLinksButton() {
+        helper.click(brokenLinksButton);
+    }
+
+    public void clickBrokenLinksText() {
+        helper.click(brokenLinksBrokenlinkText);
+    }
+
+    public void verifyBrokenLink() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        helper.assertText(brokenLinksVerifyText, "Status Codes");
     }
 }

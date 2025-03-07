@@ -134,4 +134,19 @@ public class ElementsPageStepsDefinitions {
     public void verifyMessage(String arg0) {
         elementsPage.verifyNotFoundMessage();
     }
+
+    @And("Click Broken Links button")
+    public void clickBrokenLinksButton() {
+        elementsPage.clickBrokenLinksButton();
+    }
+
+    @And("Click Broken Link")
+    public void clickBrokenLink() {
+        elementsPage.clickBrokenLinksText();
+    }
+
+    @Then("Verify <Status Codes> message")
+    public void verifyStatusCodesMessage() {
+        elementsPage.verifyBrokenLink();
+    }
 }
