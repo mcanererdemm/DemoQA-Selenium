@@ -38,3 +38,13 @@ Feature: DemoQA.com Functional Automation Testing
     And Click War Tables
     And Provide personal cridentials and submit
     Then Verify added cridentials
+
+  @Buttons
+  Scenario: Using buttons feature
+    Given Reach demoqa home page
+    When Click Elements to reach elements page
+    And Click Buttons link
+    And Double Click first button
+    And Right Click second button
+    And Click third button
+    Then Verify button clicks

@@ -84,4 +84,29 @@ public class ElementsPageStepsDefinitions {
     public void verifyAddedCredentials() {
         elementsPage.verifyWarTableCredentials();
     }
+
+    @And("Click Buttons link")
+    public void clickButtonsLink() {
+        elementsPage.clickButtonsLink();
+    }
+
+    @And("Double Click first button")
+    public void doubleClickFirstButton() {
+        elementsPage.doubleClickFirstbutton();
+    }
+
+    @And("Right Click second button")
+    public void rightClickSecondButton() {
+        elementsPage.rightClickSecondButton();
+    }
+
+    @And("Click third button")
+    public void clickThirdButton() {
+        elementsPage.clickThirdButton();
+    }
+
+    @Then("Verify button clicks")
+    public void verifyButtonClicks() {
+        elementsPage.verifyButtonClicks();
+    }
 }

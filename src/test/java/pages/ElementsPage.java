@@ -44,6 +44,14 @@ public class ElementsPage {
     By warTableSalary = By.xpath("//input[@id='salary']");
     By warTableDepartment = By.xpath("//input[@id='department']");
     By warTableRows = By.xpath("//div[@class=\"rt-tr-group\"]//div[@class=\"rt-tr -even\"]");
+    By buttonsLink = By.xpath("//span[normalize-space()='Buttons']");
+    By doubleClickButton = By.xpath("//button[@id=\"doubleClickBtn\"]");
+    By doubleClickButtonMessage = By.xpath("//p[@id='doubleClickMessage']");
+    By rightClickButton = By.xpath("//button[@id=\"rightClickBtn\"]");
+    By rightClickButtonMessage = By.xpath("//p[@id='rightClickMessage']");
+    By thirdClickButton = By.xpath("//div[@class = \"col-12 mt-4 col-md-6\"]//div/div[3]//button[1]");
+    By thirdClickButtonMessage = By.xpath("//p[@id='dynamicClickMessage']");
+
 
     public void reachHomePage() {
         String currentURL = driver.getCurrentUrl();
@@ -139,4 +147,37 @@ public class ElementsPage {
                 "33000\n" +
                 "QA");
     }
+
+    public void clickButtonsLink() {
+        helper.click(buttonsLink);
+    }
+
+    public void doubleClickFirstbutton() {
+        helper.doubleClick(doubleClickButton);
+    }
+
+    public void rightClickSecondButton() {
+        helper.scrollDown(150);
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        helper.rightClick(rightClickButton);
+    }
+
+    public void clickThirdButton() {
+        helper.click(thirdClickButton);
+    }
+
+
+    public void verifyButtonClicks() {
+        helper.scrollDown(150);
+        boolean firstButton = helper.assertText(doubleClickButtonMessage, "You have done a double click");
+        boolean secondButton = helper.assertText(rightClickButtonMessage, "You have done a right click");
+        boolean thirdButton = helper.assertText(thirdClickButtonMessage, "You have done a dynamic click");
+        Assert.assertTrue((firstButton && secondButton && thirdButton));
+    }
+
+
 }

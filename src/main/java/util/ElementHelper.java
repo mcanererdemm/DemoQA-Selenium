@@ -36,6 +36,14 @@ public class ElementHelper {
         this.findElement(key).click();
     }
 
+    public void doubleClick(By key) {
+        action.doubleClick(findElement(key)).perform();
+    }
+
+    public void rightClick(By key) {
+        action.contextClick(findElement(key)).perform();
+    }
+
     public void sendKeys(By key, String text) {
         this.findElement(key).sendKeys(text);
     }
