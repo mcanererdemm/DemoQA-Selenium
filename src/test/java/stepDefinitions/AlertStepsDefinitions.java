@@ -105,4 +105,19 @@ public class AlertStepsDefinitions {
     public void verifySecondChildFrame() {
         alertPage.verifyChildFrame();
     }
+
+    @And("User click Modals Dialog Button")
+    public void userClickModalsDialogButton() {
+        alertPage.clickModalsDialogButton();
+    }
+
+    @Then("Verify small dialog")
+    public void verifySmallDialog() {
+        alertPage.verifySmallDialog();
+    }
+
+    @And("Verify large dialog")
+    public void verifyLargeDialog() {
+        alertPage.verifyLargeDialog();
+    }
 }

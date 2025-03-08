@@ -33,9 +33,14 @@ public class AlertsPage {
     By fourthClickMeButtonMessage = By.xpath("//span[@id='promptResult']");
     By framesButton = By.xpath("//span[normalize-space()='Frames']");
     By nestedFramesButton = By.xpath("//span[normalize-space()='Nested Frames']");
+    By modalsDialogButton = By.xpath("//span[normalize-space()='Modal Dialogs']");
     By iframesOne = By.xpath("//*[@id=\"frame1\"]");
     By iframesTwo = By.xpath("//*[@id=\"frame2\"]");
     By iframesHeader = By.xpath("//*[@id=\"sampleHeading\"]");
+    By smallModalButton = By.xpath("//button[@id='showSmallModal']");
+    By smallModalMessage = By.xpath("//div[@id='example-modal-sizes-title-sm']");
+    By largeModalButton = By.xpath("//button[@id='showLargeModal']");
+    By largeModalMessage = By.xpath("//div[@id='example-modal-sizes-title-lg']");
 
     public AlertsPage(WebDriver driver) {
         this.driver = driver;
@@ -162,5 +167,23 @@ public class AlertsPage {
         this.driver.switchTo().frame(iFrameTwo);
         helper.assertText(By.xpath("//p[normalize-space()='Child Iframe']"), "Child frame");
         this.driver.switchTo().defaultContent();
+    }
+
+    public void clickModalsDialogButton() {
+        helper.click(modalsDialogButton);
+    }
+
+    public void verifySmallDialog() {
+        helper.click(smallModalButton);
+        this.driver.switchTo().activeElement();
+        helper.assertText(smallModalMessage, "Small Modal");
+        helper.click(By.xpath("//button[@id='closeSmallModal']"));
+        this.driver.switchTo().defaultContent();
+    }
+
+    public void verifyLargeDialog() {
+        helper.click(largeModalButton);
+        this.driver.switchTo().activeElement();
+        helper.assertText(largeModalMessage, "Large Modal");
     }
 }

@@ -42,10 +42,17 @@ Feature: DemoQA.com Alerts Feature Testing
     Then Verify First iFrame
     And Verify Second iFrame
 
-  @Frames
   Scenario: Using Alert feature with Nested Frames Page
     Given Reach demoqa home page
     When User click alerts link
     And User click Nested Frames Button
     Then Verify First Parent Frame
     And Verify Second Child Frame
+
+  @Frames
+  Scenario: Using Alert feature with Modals Dialog Page
+    Given Reach demoqa home page
+    When User click alerts link
+    And User click Modals Dialog Button
+    Then Verify small dialog
+    And Verify large dialog
