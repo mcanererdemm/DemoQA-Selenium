@@ -90,4 +90,19 @@ public class AlertStepsDefinitions {
     public void verifySecondIFrame() {
         alertPage.verifyIframeTwo();
     }
+
+    @And("User click Nested Frames Button")
+    public void userClickNestedFramesButton() {
+        alertPage.clickNestedFramesButton();
+    }
+
+    @Then("Verify First Parent Frame")
+    public void verifyFirstParentFrame() {
+        alertPage.verifyParentFrame();
+    }
+
+    @And("Verify Second Child Frame")
+    public void verifySecondChildFrame() {
+        alertPage.verifyChildFrame();
+    }
 }

@@ -32,6 +32,7 @@ public class AlertsPage {
     By fourthClickMeButton = By.xpath("//button[@id='promtButton']");
     By fourthClickMeButtonMessage = By.xpath("//span[@id='promptResult']");
     By framesButton = By.xpath("//span[normalize-space()='Frames']");
+    By nestedFramesButton = By.xpath("//span[normalize-space()='Nested Frames']");
     By iframesOne = By.xpath("//*[@id=\"frame1\"]");
     By iframesTwo = By.xpath("//*[@id=\"frame2\"]");
     By iframesHeader = By.xpath("//*[@id=\"sampleHeading\"]");
@@ -141,5 +142,25 @@ public class AlertsPage {
         WebElement iFrame = helper.findElement(iframesTwo);
         this.driver.switchTo().frame(iFrame);
         helper.assertText(iframesHeader, "This is a sample page");
+    }
+
+    public void clickNestedFramesButton() {
+        helper.click(nestedFramesButton);
+    }
+
+    public void verifyParentFrame() {
+        WebElement iFrame = helper.findElement(iframesOne);
+        this.driver.switchTo().frame(iFrame);
+        helper.assertText(By.xpath("/html/body"), "Parent frame");
+        this.driver.switchTo().defaultContent();
+    }
+
+    public void verifyChildFrame() {
+        WebElement iFrame = helper.findElement(iframesOne);
+        this.driver.switchTo().frame(iFrame);
+        WebElement iFrameTwo = helper.findElement(By.xpath("//iframe[@srcdoc=\"<p>Child Iframe</p>\"]"));
+        this.driver.switchTo().frame(iFrameTwo);
+        helper.assertText(By.xpath("//p[normalize-space()='Child Iframe']"), "Child frame");
+        this.driver.switchTo().defaultContent();
     }
 }

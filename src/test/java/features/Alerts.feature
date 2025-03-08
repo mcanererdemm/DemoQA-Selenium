@@ -34,10 +34,18 @@ Feature: DemoQA.com Alerts Feature Testing
     And Click Fourth Button, provide an input and accept
     Then Verify Alert Messages
 
-  @Frames
+
   Scenario: Using Alert feature with Frames Page
     Given Reach demoqa home page
     When User click alerts link
     And User click Frames Button
     Then Verify First iFrame
     And Verify Second iFrame
+
+  @Frames
+  Scenario: Using Alert feature with Nested Frames Page
+    Given Reach demoqa home page
+    When User click alerts link
+    And User click Nested Frames Button
+    Then Verify First Parent Frame
+    And Verify Second Child Frame
