@@ -64,6 +64,11 @@ public class ElementHelper {
         return elementText.equals(text);
     }
 
+    public boolean containText(By key, String text) {
+        String elementText = this.findElement(key).getText();
+        return elementText.contains(text);
+    }
+
     public void selectCheckBox(By key) {
         if (!this.findElement(key).isSelected()) {
             this.findElement(key).click();
