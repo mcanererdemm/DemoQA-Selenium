@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.ElementHelper;
@@ -22,7 +23,7 @@ public class AlertsPage {
     By newTabButton = By.xpath("//button[@id='tabButton']");
     By newTabHeaderMessage = By.xpath("//h1[@id='sampleHeading']");
     By newWindowButton = By.xpath("//button[@id='windowButton']");
-    By newMessageWindowButton = By.xpath("//button[@id='messageWindowButton']");
+    // By newMessageWindowButton = By.xpath("//button[@id='messageWindowButton']");
     By alertsButton = By.xpath("//span[normalize-space()='Alerts']");
     By firstClickMeButton = By.xpath("//button[@id='alertButton']");
     By secondClickMeButton = By.xpath("//button[@id='timerAlertButton']");
@@ -30,6 +31,10 @@ public class AlertsPage {
     By thirdClickMeButtonMessage = By.xpath("//span[@id='confirmResult']");
     By fourthClickMeButton = By.xpath("//button[@id='promtButton']");
     By fourthClickMeButtonMessage = By.xpath("//span[@id='promptResult']");
+    By framesButton = By.xpath("//span[normalize-space()='Frames']");
+    By iframesOne = By.xpath("//*[@id=\"frame1\"]");
+    By iframesTwo = By.xpath("//*[@id=\"frame2\"]");
+    By iframesHeader = By.xpath("//*[@id=\"sampleHeading\"]");
 
     public AlertsPage(WebDriver driver) {
         this.driver = driver;
@@ -119,5 +124,22 @@ public class AlertsPage {
     public void verifyAlertmessages() {
         helper.assertText(thirdClickMeButtonMessage, "You selected Ok");
         helper.assertText(fourthClickMeButtonMessage, "You entered Caner Erdem");
+    }
+
+    public void clickFramesButton() {
+        helper.click(framesButton);
+    }
+
+    public void verifyIframeOne() {
+        WebElement iFrame = helper.findElement(iframesOne);
+        this.driver.switchTo().frame(iFrame);
+        helper.assertText(iframesHeader, "This is a sample page");
+        this.driver.switchTo().defaultContent();
+    }
+
+    public void verifyIframeTwo() {
+        WebElement iFrame = helper.findElement(iframesTwo);
+        this.driver.switchTo().frame(iFrame);
+        helper.assertText(iframesHeader, "This is a sample page");
     }
 }

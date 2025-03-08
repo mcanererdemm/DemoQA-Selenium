@@ -75,4 +75,19 @@ public class AlertStepsDefinitions {
     public void verifyAlertMessages() {
         alertPage.verifyAlertmessages();
     }
+
+    @And("User click Frames Button")
+    public void userClickFramesButton() {
+        alertPage.clickFramesButton();
+    }
+
+    @Then("Verify First iFrame")
+    public void verifyFirstIFrame() {
+        alertPage.verifyIframeOne();
+    }
+
+    @And("Verify Second iFrame")
+    public void verifySecondIFrame() {
+        alertPage.verifyIframeTwo();
+    }
 }

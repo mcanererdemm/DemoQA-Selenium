@@ -1,4 +1,4 @@
-
+@Alerts
 Feature: DemoQA.com Alerts Feature Testing
 
   Scenario: Using Alert feature with New Tab button
@@ -23,7 +23,7 @@ Feature: DemoQA.com Alerts Feature Testing
 #    And Click New Window Message button
 #    Then Verify New Window Messages
 
-  @Alerts
+
   Scenario: Using Alert feature with Alerts Page
     Given Reach demoqa home page
     When User click alerts link
@@ -33,3 +33,11 @@ Feature: DemoQA.com Alerts Feature Testing
     And Click Third Button and accept
     And Click Fourth Button, provide an input and accept
     Then Verify Alert Messages
+
+  @Frames
+  Scenario: Using Alert feature with Frames Page
+    Given Reach demoqa home page
+    When User click alerts link
+    And User click Frames Button
+    Then Verify First iFrame
+    And Verify Second iFrame
