@@ -1,4 +1,4 @@
-@Alerts
+
 Feature: DemoQA.com Alerts Feature Testing
 
   Scenario: Using Alert feature with New Tab button
@@ -23,7 +23,7 @@ Feature: DemoQA.com Alerts Feature Testing
 #    And Click New Window Message button
 #    Then Verify New Window Messages
 
-
+  @Alerts
   Scenario: Using Alert feature with Alerts Page
     Given Reach demoqa home page
     When User click alerts link

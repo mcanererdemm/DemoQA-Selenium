@@ -48,25 +48,31 @@ public class AlertStepsDefinitions {
 
     @And("Click Alerts Button")
     public void clickAlertsButton() {
+        alertPage.clickAlertsButton();
     }
 
     @And("Click First Button and accept")
     public void clickFirstButtonAndAccept() {
+        alertPage.clickFirstButton();
     }
 
     @And("Click Second Button and accept")
     public void clickSecondButtonAndAccept() {
+        alertPage.clickSecondButton();
     }
 
     @And("Click Third Button and accept")
     public void clickThirdButtonAndAccept() {
+        alertPage.clickThirdButton();
     }
 
     @And("Click Fourth Button, provide an input and accept")
     public void clickFourthButtonProvideAnInputAndAccept() {
+        alertPage.clickFourthBotton();
     }
 
     @Then("Verify Alert Messages")
     public void verifyAlertMessages() {
+        alertPage.verifyAlertmessages();
     }
 }
