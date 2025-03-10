@@ -154,4 +154,29 @@ public class WidgetStepsDefinitions {
     public void hoverOverDateAndVerifyText() {
         widgetsPage.hoverOverDateAndVerifyText();
     }
+
+    @And("Click Menu button")
+    public void clickMenuButton() {
+        widgetsPage.clickMenuButton();
+    }
+
+    @And("Hover Main item {int}")
+    public void hoverMainItem(int arg0) {
+        widgetsPage.hoverMainItem();
+    }
+
+    @And("Hover Sub items list")
+    public void hoverSubItemsList() {
+        widgetsPage.hoverSubItemsList();
+    }
+
+    @And("Hover sub item{int}")
+    public void hoverSubItem(int arg0) {
+        widgetsPage.hoverSubItem();
+    }
+
+    @Then("Verify last item")
+    public void verifyLastItem() {
+        widgetsPage.verifyLastItem();
+    }
 }

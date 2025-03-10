@@ -49,6 +49,10 @@ public class WidgetsPage {
     By hoverButton = By.xpath("//button[@id='toolTipButton']");
     By hoverInput = By.xpath("//input[@id='toolTipTextField']");
     By hoverLink = By.xpath("//a[normalize-space()='1.10.32']");
+    By menuButton = By.xpath("//span[normalize-space()='Menu']");
+    By mainItemTwo = By.xpath("//a[normalize-space()='Main Item 2']");
+    By subSubList = By.xpath("//a[normalize-space()='SUB SUB LIST »']");
+    By subSubItem1 = By.xpath("//a[normalize-space()='Sub Sub Item 1']");
 
     public WidgetsPage(WebDriver driver) {
         this.driver = driver;
@@ -260,5 +264,33 @@ public class WidgetsPage {
     public void hoverOverDateAndVerifyText() {
         helper.action.moveToElement(driver.findElement(hoverLink)).perform();
         helper.assertText(By.xpath("//*[@id=\"sectionToolTip\"]/div[2]"), "You hovered over the 1.10.32");
+    }
+
+    public void clickMenuButton() {
+        helper.scrollDown(500);
+        helper.click(menuButton);
+    }
+
+    public void hoverMainItem() {
+        helper.scrollUp(250);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        helper.hoverOver(mainItemTwo);
+    }
+
+    public void hoverSubItemsList() {
+        helper.hoverOver(subSubList);
+    }
+
+    public void hoverSubItem() {
+        helper.hoverOver(subSubItem1);
+    }
+
+    public void verifyLastItem() {
+        boolean isDisplayed = helper.findElement(subSubItem1).isDisplayed();
+        assertTrue(isDisplayed);
     }
 }

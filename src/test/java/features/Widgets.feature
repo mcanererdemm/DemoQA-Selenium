@@ -69,3 +69,13 @@ Feature: DemoQA.com Widgets Feature Testing
     And Hover over first button and verify text
     And Hover over input and verify text
     And Hover over date and verify text
+
+  @Menu
+  Scenario: Using Widgets feature with Menu
+    Given Reach demoqa home page
+    When User click widgets link
+    And Click Menu button
+    And Hover Main item 2
+    And Hover Sub items list
+    And Hover sub item2
+    Then Verify last item
