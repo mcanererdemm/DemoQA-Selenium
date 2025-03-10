@@ -1,6 +1,9 @@
 package pages;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -8,7 +11,6 @@ import util.ElementHelper;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.stream.Stream;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -37,6 +39,9 @@ public class WidgetsPage {
     By timeListTexts = By.xpath("//li[contains(@class, \"react-datepicker__time-list-item \")]");
     By sliderButton = By.xpath("//span[normalize-space()='Slider']");
     By sliderBar = By.xpath("//*[@id=\"sliderContainer\"]/div[1]/span/input");
+    By progressBarButton = By.xpath("//span[normalize-space()='Progress Bar']");
+    By progressBarStartButton = By.xpath("//button[@id='startStopButton']");
+    By progressBar = By.xpath("//div[@role='progressbar']");
 
     public WidgetsPage(WebDriver driver) {
         this.driver = driver;
@@ -185,5 +190,31 @@ public class WidgetsPage {
         WebElement slider = helper.findElement(sliderBar);
         String newId = slider.getDomAttribute("value");
         assertEquals(newId, "53");
+    }
+
+    public void clickProgressBarButton() {
+        helper.scrollDown(350);
+        helper.click(progressBarButton);
+    }
+
+    public void clickStartButton() {
+        helper.scrollUp(150);
+        helper.click(progressBarStartButton);
+    }
+
+    public void clickStopButtonAtPercent() {
+        while (true) {
+            String progress = helper.findElement(progressBar).getDomAttribute("aria-valuenow");
+            if (progress != null && (Integer.parseInt(progress) == 16)) {
+                helper.click(progressBarStartButton);
+                break;
+            }
+        }
+    }
+
+    public void verifyProgressBarPercentage() {
+        String progress = helper.findElement(progressBar).getDomAttribute("aria-valuenow");
+        boolean result = progress != null && (progress.contains("16") || progress.contains("17"));
+        assertTrue(result);
     }
 }

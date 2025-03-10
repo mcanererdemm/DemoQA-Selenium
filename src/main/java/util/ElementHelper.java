@@ -56,6 +56,11 @@ public class ElementHelper {
         js.executeScript("window.scrollBy(0," + length + ")", "");
     }
 
+    public void scrollUp(int length) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,-" + length + ")", "");
+    }
+
     public boolean assertText(By key, String text) {
         String elementText = this.findElement(key).getText();
         return elementText.equals(text);
@@ -80,11 +85,13 @@ public class ElementHelper {
         File dir = new File(downloadPath);
         File[] dirContents = dir.listFiles();
 
-        for (int i = 0; i < dirContents.length; i++) {
-            if (dirContents[i].getName().equals(fileName)) {
-                // File has been found, it can now be deleted:
-                dirContents[i].delete();
-                return true;
+        if (dirContents != null) {
+            for (File dirContent : dirContents) {
+                if (dirContent.getName().equals(fileName)) {
+                    // File has been found, it can now be deleted:
+                    dirContent.delete();
+                    return true;
+                }
             }
         }
         return false;

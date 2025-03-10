@@ -37,10 +37,18 @@ Feature: DemoQA.com Widgets Feature Testing
     And Click Date and Time picker text
     Then Verify selected date and time
 
-  @Widgets
   Scenario: Using Widgets feature with Slider
     Given Reach demoqa home page
     When User click widgets link
     And Click Slider button
     And Provide slider value
     Then Verify slider value
+
+  @Widgets
+  Scenario: Using Widgets feature with Progress Bar
+    Given Reach demoqa home page
+    When User click widgets link
+    And Click Progress Bar button
+    And Click Start button
+    And Click Stop button at 53 percent
+    Then Verify progress bar percentage

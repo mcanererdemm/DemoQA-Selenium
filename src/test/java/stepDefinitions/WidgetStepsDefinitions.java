@@ -2,9 +2,7 @@ package stepDefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
-import pages.AlertsPage;
 import pages.WidgetsPage;
 import util.DriverFactory;
 
@@ -100,5 +98,25 @@ public class WidgetStepsDefinitions {
     @Then("Verify slider value")
     public void verifySliderValue() {
         widgetsPage.verifySliderValue();
+    }
+
+    @And("Click Progress Bar button")
+    public void clickProgressBarButton() {
+        widgetsPage.clickProgressBarButton();
+    }
+
+    @And("Click Start button")
+    public void clickStartButton() {
+        widgetsPage.clickStartButton();
+    }
+
+    @And("Click Stop button at {int} percent")
+    public void clickStopButtonAtPercent(int arg0) {
+        widgetsPage.clickStopButtonAtPercent();
+    }
+
+    @Then("Verify progress bar percentage")
+    public void verifyProgressBarPercentage() {
+        widgetsPage.verifyProgressBarPercentage();
     }
 }
