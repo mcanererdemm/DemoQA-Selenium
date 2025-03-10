@@ -1,4 +1,3 @@
-@Widgets
 Feature: DemoQA.com Widgets Feature Testing
 
   Scenario: Using Widgets feature with Accordian button
@@ -7,3 +6,34 @@ Feature: DemoQA.com Widgets Feature Testing
     And Click First Accordian button and verify
     And Click Second Accordian button and verify
     Then Click Third Accordian button
+
+  Scenario: Using Widgets feature with Auto Complete
+    Given Reach demoqa home page
+    When User click widgets link
+    And Click Auto Complete button
+    And Provide color prefix i.e: bl and select blue
+    And Provide color prefix i.e: wh and select white
+    Then Verify selected color names
+
+  Scenario: Using Widgets feature with Auto Complete
+    Given Reach demoqa home page
+    When User click widgets link
+    And Click Auto Complete button
+    And Provide single color prefix i.e: ye and select Yellow
+    And Provide single color prefix i.e: gre and select Green
+    Then Verify last selected color names
+
+  Scenario: Using Widgets feature with Date Picker
+    Given Reach demoqa home page
+    When User click widgets link
+    And Click Datepicker button
+    And Click Datepicker text
+    Then Verify selected date
+
+  @Widgets
+  Scenario: Using Widgets feature with Date and Time Picker
+    Given Reach demoqa home page
+    When User click widgets link
+    And Click Datepicker button
+    And Click Date and Time picker text
+    Then Verify selected date and time
