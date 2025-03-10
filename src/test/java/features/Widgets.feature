@@ -60,3 +60,12 @@ Feature: DemoQA.com Widgets Feature Testing
     And Click Tabs button
     And Click Demo tab
     Then Verify demo tab paragraph
+
+  @ToolTips
+  Scenario: Using Widgets feature with Tool Tips
+    Given Reach demoqa home page
+    When User click widgets link
+    And Click Tool Tips button
+    And Hover over first button and verify text
+    And Hover over input and verify text
+    And Hover over date and verify text

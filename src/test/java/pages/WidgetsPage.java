@@ -45,6 +45,10 @@ public class WidgetsPage {
     By originTab = By.xpath("//a[@id='demo-tab-origin']");
     By originTabParagraph = By.xpath("//p[contains(text(),'Contrary to popular belief, Lorem Ipsum is not sim')]");
     By tabButton = By.xpath("//span[normalize-space()='Tabs']");
+    By toolTipButton = By.xpath("//span[normalize-space()='Tool Tips']");
+    By hoverButton = By.xpath("//button[@id='toolTipButton']");
+    By hoverInput = By.xpath("//input[@id='toolTipTextField']");
+    By hoverLink = By.xpath("//a[normalize-space()='1.10.32']");
 
     public WidgetsPage(WebDriver driver) {
         this.driver = driver;
@@ -183,10 +187,7 @@ public class WidgetsPage {
         int step = sliderWidth / (max - min);
 
         int offset = (targetValue - currentValue - 25) * step;
-        helper.action.clickAndHold(slider)
-                .moveByOffset(offset, 0)
-                .release()
-                .perform();
+        helper.action.clickAndHold(slider).moveByOffset(offset, 0).release().perform();
     }
 
     public void verifySliderValue() {
@@ -234,5 +235,30 @@ public class WidgetsPage {
     public void verifyDemoTabParagraph() {
         boolean isParagraphTrue = helper.containText(originTabParagraph, "Contrary to popular belief, Lorem Ipsum is not sim");
         assertTrue(isParagraphTrue);
+    }
+
+    public void clickToolTipsButton() {
+        helper.scrollDown(350);
+        helper.click(toolTipButton);
+    }
+
+    public void hoverOverFirstButtonAndVerifyText() {
+        try {
+            Thread.sleep(1_500);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        helper.action.moveToElement(driver.findElement(hoverButton)).perform();
+        helper.assertText(By.xpath("//*[@id=\"buttonToolTip\"]/div[2]"), "You hovered over the Button");
+    }
+
+    public void hoverOverInputAndVerifyText() {
+        helper.action.moveToElement(driver.findElement(hoverInput)).perform();
+        helper.assertText(By.xpath("//*[@id=\"textFieldToolTip\"]/div[2]"), "You hovered over the text field");
+    }
+
+    public void hoverOverDateAndVerifyText() {
+        helper.action.moveToElement(driver.findElement(hoverLink)).perform();
+        helper.assertText(By.xpath("//*[@id=\"sectionToolTip\"]/div[2]"), "You hovered over the 1.10.32");
     }
 }

@@ -134,4 +134,24 @@ public class WidgetStepsDefinitions {
     public void verifyDemoTabParagraph() {
         widgetsPage.verifyDemoTabParagraph();
     }
+
+    @And("Click Tool Tips button")
+    public void clickToolTipsButton() {
+        widgetsPage.clickToolTipsButton();
+    }
+
+    @And("Hover over first button and verify text")
+    public void hoverOverFirstButtonAndVerifyText() {
+        widgetsPage.hoverOverFirstButtonAndVerifyText();
+    }
+
+    @And("Hover over input and verify text")
+    public void hoverOverInputAndVerifyText() {
+        widgetsPage.hoverOverInputAndVerifyText();
+    }
+
+    @And("Hover over date and verify text")
+    public void hoverOverDateAndVerifyText() {
+        widgetsPage.hoverOverDateAndVerifyText();
+    }
 }

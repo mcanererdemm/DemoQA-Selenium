@@ -42,6 +42,10 @@ public class ElementHelper {
         action.contextClick(findElement(key)).perform();
     }
 
+    public void hoverOver(By key) {
+        action.moveToElement(findElement(key)).perform();
+    }
+
     public void sendKeys(By key, String text) {
         this.findElement(key).sendKeys(text);
     }
