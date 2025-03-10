@@ -30,10 +30,17 @@ Feature: DemoQA.com Widgets Feature Testing
     And Click Datepicker text
     Then Verify selected date
 
-  @Widgets
   Scenario: Using Widgets feature with Date and Time Picker
     Given Reach demoqa home page
     When User click widgets link
     And Click Datepicker button
     And Click Date and Time picker text
     Then Verify selected date and time
+
+  @Widgets
+  Scenario: Using Widgets feature with Slider
+    Given Reach demoqa home page
+    When User click widgets link
+    And Click Slider button
+    And Provide slider value
+    Then Verify slider value

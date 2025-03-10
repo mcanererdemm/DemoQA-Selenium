@@ -86,4 +86,19 @@ public class WidgetStepsDefinitions {
     public void verifySelectedDateAndTime() {
         widgetsPage.verifySelectedDateAndTime();
     }
+
+    @And("Click Slider button")
+    public void clickSliderButton() {
+        widgetsPage.clickSliderButton();
+    }
+
+    @And("Provide slider value")
+    public void provideSliderValue() {
+        widgetsPage.provideSliderValue();
+    }
+
+    @Then("Verify slider value")
+    public void verifySliderValue() {
+        widgetsPage.verifySliderValue();
+    }
 }

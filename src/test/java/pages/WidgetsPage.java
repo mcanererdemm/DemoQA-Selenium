@@ -1,9 +1,6 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -38,6 +35,8 @@ public class WidgetsPage {
     By monthPickerButton = By.xpath("//select[@class='react-datepicker__month-select']");
     By yearPickerButton = By.xpath("//select[@class='react-datepicker__year-select']");
     By timeListTexts = By.xpath("//li[contains(@class, \"react-datepicker__time-list-item \")]");
+    By sliderButton = By.xpath("//span[normalize-space()='Slider']");
+    By sliderBar = By.xpath("//*[@id=\"sliderContainer\"]/div[1]/span/input");
 
     public WidgetsPage(WebDriver driver) {
         this.driver = driver;
@@ -154,5 +153,37 @@ public class WidgetsPage {
 
     public void verifySelectedDateAndTime() {
         helper.assertText(dateAndTimePicker, "November 30, 2025 11:30 AM");
+    }
+
+    public void clickSliderButton() {
+        helper.click(sliderButton);
+    }
+
+    public void provideSliderValue() {
+        WebElement slider = helper.findElement(sliderBar);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        int currentValue = Integer.parseInt(slider.getAttribute("value")); // Mevcut değer
+        int targetValue = 53;
+        int min = Integer.parseInt(slider.getAttribute("min")); // 0
+        int max = Integer.parseInt(slider.getAttribute("max")); // 100
+
+        int sliderWidth = slider.getSize().getWidth();
+        int step = sliderWidth / (max - min);
+
+        int offset = (targetValue - currentValue - 25) * step;
+        helper.action.clickAndHold(slider)
+                .moveByOffset(offset, 0)
+                .release()
+                .perform();
+    }
+
+    public void verifySliderValue() {
+        WebElement slider = helper.findElement(sliderBar);
+        String newId = slider.getDomAttribute("value");
+        assertEquals(newId, "53");
     }
 }

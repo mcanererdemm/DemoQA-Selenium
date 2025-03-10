@@ -13,7 +13,7 @@ public class ElementHelper {
 
     private final WebDriver driver;
     private final WebDriverWait waiter;
-    private final Actions action;
+    public Actions action;
 
     public ElementHelper(WebDriver driver) {
         this.driver = driver;
