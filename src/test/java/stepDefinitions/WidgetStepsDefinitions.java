@@ -119,4 +119,19 @@ public class WidgetStepsDefinitions {
     public void verifyProgressBarPercentage() {
         widgetsPage.verifyProgressBarPercentage();
     }
+
+    @And("Click Tabs button")
+    public void clickTabsButton() {
+        widgetsPage.clickTabsButton();
+    }
+
+    @And("Click Demo tab")
+    public void clickDemoTab() {
+        widgetsPage.clickDemoTab();
+    }
+
+    @Then("Verify demo tab paragraph")
+    public void verifyDemoTabParagraph() {
+        widgetsPage.verifyDemoTabParagraph();
+    }
 }

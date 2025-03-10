@@ -44,7 +44,7 @@ Feature: DemoQA.com Widgets Feature Testing
     And Provide slider value
     Then Verify slider value
 
-  @Widgets
+
   Scenario: Using Widgets feature with Progress Bar
     Given Reach demoqa home page
     When User click widgets link
@@ -52,3 +52,11 @@ Feature: DemoQA.com Widgets Feature Testing
     And Click Start button
     And Click Stop button at 53 percent
     Then Verify progress bar percentage
+
+  @Widgets
+  Scenario: Using Widgets feature with Progress Bar
+    Given Reach demoqa home page
+    When User click widgets link
+    And Click Tabs button
+    And Click Demo tab
+    Then Verify demo tab paragraph

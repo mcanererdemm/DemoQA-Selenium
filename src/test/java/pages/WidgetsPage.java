@@ -42,6 +42,9 @@ public class WidgetsPage {
     By progressBarButton = By.xpath("//span[normalize-space()='Progress Bar']");
     By progressBarStartButton = By.xpath("//button[@id='startStopButton']");
     By progressBar = By.xpath("//div[@role='progressbar']");
+    By originTab = By.xpath("//a[@id='demo-tab-origin']");
+    By originTabParagraph = By.xpath("//p[contains(text(),'Contrary to popular belief, Lorem Ipsum is not sim')]");
+    By tabButton = By.xpath("//span[normalize-space()='Tabs']");
 
     public WidgetsPage(WebDriver driver) {
         this.driver = driver;
@@ -216,5 +219,20 @@ public class WidgetsPage {
         String progress = helper.findElement(progressBar).getDomAttribute("aria-valuenow");
         boolean result = progress != null && (progress.contains("16") || progress.contains("17"));
         assertTrue(result);
+    }
+
+    public void clickTabsButton() {
+        helper.scrollDown(350);
+        helper.click(tabButton);
+    }
+
+    public void clickDemoTab() {
+        helper.scrollUp(150);
+        helper.click(originTab);
+    }
+
+    public void verifyDemoTabParagraph() {
+        boolean isParagraphTrue = helper.containText(originTabParagraph, "Contrary to popular belief, Lorem Ipsum is not sim");
+        assertTrue(isParagraphTrue);
     }
 }
