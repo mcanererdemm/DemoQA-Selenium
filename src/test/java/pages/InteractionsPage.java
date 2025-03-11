@@ -2,11 +2,14 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import util.ElementHelper;
 
 import java.time.Duration;
+
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
 public class InteractionsPage {
 
@@ -16,8 +19,17 @@ public class InteractionsPage {
 
     // Locators
     By sortableButton = By.xpath("//span[normalize-space()='Sortable']");
+    By selectablesButton = By.xpath("//span[normalize-space()='Selectable']");
+    By resizableButton = By.xpath("//span[normalize-space()='Resizable']");
+
     By gridTab = By.xpath("//a[@id='demo-tab-grid']");
     By gridItemSixButton = By.xpath("//div[@class='create-grid']//div[@class='list-group-item list-group-item-action'][normalize-space()='Six']");
+    By listSecondItem = By.xpath("//li[normalize-space()='Dapibus ac facilisis in']");
+    By listSecondItemAfter = By.xpath("//li[normalize-space()='Dapibus ac facilisis in']");
+    By listThirdItem = By.xpath("//li[normalize-space()='Morbi leo risus']");
+    By listThirdItemAfter = By.xpath("//li[normalize-space()='Morbi leo risus']");
+    By cornerOfFirstResizable = By.xpath("//div[@id='resizableBoxWithRestriction']//span[@class='react-resizable-handle react-resizable-handle-se']");
+    By firstResizableShapeAfter = By.xpath("//*[@id=\"resizableBoxWithRestriction\"]");
 
     public InteractionsPage(WebDriver driver) {
         this.driver = driver;
@@ -36,7 +48,7 @@ public class InteractionsPage {
             helper.clickAndHold(gridItemSixButton);
             Thread.sleep(2000);
             String attStyle = helper.findElement(gridItemSixButton).getDomAttribute("style");
-            Assert.assertEquals(attStyle, "opacity: 0; visibility: hidden;");
+            assertEquals("opacity: 0; visibility: hidden;", attStyle);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -44,6 +56,47 @@ public class InteractionsPage {
 
     public void verifyChangeAtSixButton() {
         String attStyle = helper.findElement(gridItemSixButton).getDomAttribute("style");
-        Assert.assertEquals(attStyle, "opacity: 0; visibility: hidden;");
+        assertEquals("opacity: 0; visibility: hidden;", attStyle);
+    }
+
+    public void clickSelectablesButton() {
+        helper.click(selectablesButton);
+    }
+
+    public void clickSecondAndThirdItems() {
+        helper.click(listSecondItem);
+        helper.click(listThirdItem);
+    }
+
+    public void verifyAttributeChangeInThoseTwoItems() {
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        String attrSecond = helper.findElement(listSecondItemAfter).getDomAttribute("class");
+        String attrThird = helper.findElement(listThirdItemAfter).getDomAttribute("class");
+        boolean result = attrSecond != null && attrSecond.equals(attrThird) && attrSecond.equals("mt-2 list-group-item active list-group-item-action");
+        assertTrue(result);
+    }
+
+    public void clickResizableButton() {
+        helper.click(resizableButton);
+    }
+
+    public void resizeFirstShape() {
+        try {
+            helper.scrollDown(250);
+            Thread.sleep(3000);
+            WebElement cornerElement = helper.findElement(cornerOfFirstResizable);
+            helper.action.moveToElement(cornerElement).clickAndHold().moveByOffset(300, 200).release().perform();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void verifyChangesInFirstShape() {
+        String attr = helper.findElement(firstResizableShapeAfter).getDomAttribute("style");
+        assertEquals("width: 500px; height: 300px;", attr);
     }
 }

@@ -7,7 +7,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = {"src/test/java/features"},
         glue = {"util", "stepDefinitions"},
-        tags = "@Interactions"
+        tags = "@Resizable"
         //plugin = {"summary", "pretty", "html:Reports/CucumberReports/Reports.html"}
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
