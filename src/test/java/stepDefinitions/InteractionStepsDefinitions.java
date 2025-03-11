@@ -54,4 +54,39 @@ public class InteractionStepsDefinitions {
     public void verifyChangesInFirstShape() {
         interactionsPage.verifyChangesInFirstShape();
     }
+
+    @And("Click Droppable button")
+    public void clickDroppableButton() {
+        interactionsPage.clickDroppableButton();
+    }
+
+    @And("Drag item at simple tab")
+    public void dragItemAtSimpleTab() {
+        interactionsPage.dragItemAtSimpleTab();
+    }
+
+    @Then("Verify changes Dropped at Simple tab")
+    public void verifyChangesDroppedAtSimpleTab() {
+        interactionsPage.verifyChangesDroppedAtSimpleTab();
+    }
+
+    @And("Click Accept tab")
+    public void clickAcceptTab() {
+        interactionsPage.clickAcceptTab();
+    }
+
+    @And("Drag acceptable item into drop here")
+    public void dragAcceptableItemIntoDropHere() {
+        interactionsPage.dragAcceptableItemIntoDropHere();
+    }
+
+    @And("Drag not acceptable item into drop here")
+    public void dragNotAcceptableItemIntoDropHere() {
+        interactionsPage.dragNotAcceptableItemIntoDropHere();
+    }
+
+    @Then("Verify changes Dropped at Accept tab")
+    public void verifyChangesDroppedAtAcceptTab() {
+        interactionsPage.verifyChangesDroppedAtAcceptTab();
+    }
 }

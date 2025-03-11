@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.ElementHelper;
 
@@ -30,6 +31,13 @@ public class InteractionsPage {
     By listThirdItemAfter = By.xpath("//li[normalize-space()='Morbi leo risus']");
     By cornerOfFirstResizable = By.xpath("//div[@id='resizableBoxWithRestriction']//span[@class='react-resizable-handle react-resizable-handle-se']");
     By firstResizableShapeAfter = By.xpath("//*[@id=\"resizableBoxWithRestriction\"]");
+    By droppableButton = By.xpath("//span[normalize-space()='Droppable']");
+    By droppableSimple = By.xpath("//div[@id='draggable']");
+    By droppableSimpleDropHere = By.xpath("//*[@id=\"droppable\"]");
+    By acceptTab = By.xpath("//a[@id='droppableExample-tab-accept']");
+    By acceptableDrop = By.xpath("//div[@id='acceptable']");
+    By notAcceptableDrop = By.xpath("//div[@id='notAcceptable']");
+    By accaptableDropHere = By.xpath("//div[@id='acceptDropContainer']//div[@id='droppable']");
 
     public InteractionsPage(WebDriver driver) {
         this.driver = driver;
@@ -98,5 +106,60 @@ public class InteractionsPage {
     public void verifyChangesInFirstShape() {
         String attr = helper.findElement(firstResizableShapeAfter).getDomAttribute("style");
         assertEquals("width: 500px; height: 300px;", attr);
+    }
+
+    public void clickDroppableButton() {
+        helper.scrollDown(350);
+        helper.click(droppableButton);
+    }
+
+    public void dragItemAtSimpleTab() {
+        try {
+            helper.scrollDown(250);
+            Thread.sleep(2000);
+            helper.action
+                    .moveToElement(helper.findElement(droppableSimple)).clickAndHold()
+                    .moveToElement(helper.findElement(droppableSimpleDropHere)).release().perform();
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void verifyChangesDroppedAtSimpleTab() {
+        String attr = helper.findElement(droppableSimpleDropHere).getDomAttribute("class");
+        assertEquals("drop-box ui-droppable ui-state-highlight", attr);
+    }
+
+    public void clickAcceptTab() {
+        helper.click(acceptTab);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void dragAcceptableItemIntoDropHere() {
+        waiter.until(ExpectedConditions.elementToBeClickable(acceptableDrop));
+        helper.action
+                .moveToElement(helper.findElement(acceptableDrop)).clickAndHold()
+                .moveToElement(helper.findElement(accaptableDropHere)).release().perform();
+        String attrOfDropHere = helper.findElement(accaptableDropHere).getDomAttribute("class");
+        assertEquals("drop-box ui-droppable ui-state-highlight", attrOfDropHere);
+
+    }
+
+    public void dragNotAcceptableItemIntoDropHere() {
+        waiter.until(ExpectedConditions.elementToBeClickable(notAcceptableDrop));
+        helper.action.moveToElement(helper.findElement(notAcceptableDrop)).clickAndHold()
+                .moveToElement(helper.findElement(accaptableDropHere)).release().perform();
+        String attrOfDropHere = helper.findElement(accaptableDropHere).getDomAttribute("class");
+        assertEquals("drop-box ui-droppable ui-state-highlight", attrOfDropHere);
+    }
+
+    public void verifyChangesDroppedAtAcceptTab() {
+        String attrOfDropHere = helper.findElement(droppableSimpleDropHere).getDomAttribute("class");
+        assertEquals("drop-box ui-droppable", attrOfDropHere);
     }
 }
