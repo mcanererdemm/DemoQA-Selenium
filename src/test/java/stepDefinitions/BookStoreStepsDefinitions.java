@@ -19,4 +19,34 @@ public class BookStoreStepsDefinitions {
     public void verifyItemInTheTable() {
         bookStorePage.verifyItemInTheTable();
     }
+
+    @And("User click Login Button")
+    public void userClickLoginButton() {
+        bookStorePage.userClickLoginButton();
+    }
+
+    @And("User provide credentials and click login")
+    public void userProvideCredentialsAndClickLogin() {
+        bookStorePage.userProvideCredentialsAndClickLogin();
+    }
+
+    @Then("Verify user is logged in")
+    public void verifyUserIsLoggedIn() {
+        bookStorePage.verifyUserIsLoggedIn();
+    }
+
+    @And("User click new user button")
+    public void userClickNewUserButton() {
+        bookStorePage.userClickNewUserButton();
+    }
+
+    @And("User provide credentials and click register")
+    public void userProvideCredentialsAndClickRegister() {
+        bookStorePage.userProvideCredentialsAndClickRegister();
+    }
+
+    @Then("Verify user is registered")
+    public void verifyUserIsRegistered() {
+        bookStorePage.verifyUserIsRegistered();
+    }
 }

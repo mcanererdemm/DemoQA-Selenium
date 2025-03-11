@@ -7,7 +7,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = {"src/test/java/features"},
         glue = {"util", "stepDefinitions"},
-        tags = "@BookStore"
+        tags = "@NewUser"
         //plugin = {"summary", "pretty", "html:Reports/CucumberReports/Reports.html"}
 )
 public class TestRunner extends AbstractTestNGCucumberTests {

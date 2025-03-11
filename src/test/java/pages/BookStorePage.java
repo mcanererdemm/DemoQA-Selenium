@@ -20,6 +20,17 @@ public class BookStorePage {
     // Locators
     By inputSearchBox = By.xpath("//input[@id='searchBox']");
     By rowList = By.xpath("//div[contains(@role,'row') and @class=\"rt-tr-group\"]");
+    By loginLink = By.xpath("//span[normalize-space()='Login']");
+    By userName = By.xpath("//input[@id='userName']");
+    By password = By.xpath("//input[@id='password']");
+    By loginButton = By.xpath("//button[@id='login']");
+    By newUserButton = By.xpath("//button[@id='newUser']");
+    By verficationText = By.xpath("//p[@id='name']");
+    By firstName = By.xpath("//input[@id='firstname']");
+    By lastName = By.xpath("//input[@id='lastname']");
+    By registerButton = By.xpath("//button[@id='register']");
+    By registerVerifyMessage = By.xpath("//*[@id=\"name\"]");
+
 
     public BookStorePage(WebDriver driver) {
         this.driver = driver;
@@ -44,5 +55,49 @@ public class BookStorePage {
     public void verifyItemInTheTable() {
         int rowListNumber = helper.findElements(rowList).size();
         Assert.assertEquals(rowListNumber, 10);
+    }
+
+    public void userClickLoginButton() {
+        helper.scrollDown(300);
+        helper.click(loginLink);
+    }
+
+    public void userProvideCredentialsAndClickLogin() {
+        helper.sendKeys(userName, "Caner");
+        helper.sendKeys(password, "12345");
+        helper.click(loginButton);
+    }
+
+    public void verifyUserIsLoggedIn() {
+        String text = helper.findElement(verficationText).getText();
+        Assert.assertEquals(text, "Invalid username or password!");
+    }
+
+    public void userClickNewUserButton() {
+        helper.scrollDown(400);
+        helper.click(newUserButton);
+    }
+
+    public void userProvideCredentialsAndClickRegister() {
+        try {
+            helper.scrollDown(300);
+            helper.sendKeys(firstName, "Caner");
+            helper.sendKeys(lastName, "Erdem");
+            helper.sendKeys(userName, "Cerdem");
+            helper.sendKeys(password, "Tcac123@");
+            Thread.sleep(5_000);
+            helper.click(registerButton);
+            helper.scrollDown(300);
+            Thread.sleep(2_000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void verifyUserIsRegistered() {
+        helper.scrollDown(300);
+        WebElement element = helper.findElement(registerVerifyMessage);
+        String text = element.getText();
+        Assert.assertEquals(text, "User exists!");
     }
 }
