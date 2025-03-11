@@ -53,6 +53,18 @@ public class WidgetsPage {
     By mainItemTwo = By.xpath("//a[normalize-space()='Main Item 2']");
     By subSubList = By.xpath("//a[normalize-space()='SUB SUB LIST »']");
     By subSubItem1 = By.xpath("//a[normalize-space()='Sub Sub Item 1']");
+    By selectMenuButton = By.xpath("//span[normalize-space()='Select Menu']");
+    By selectOptionInput = By.xpath("//*[@id=\"withOptGroup\"]");
+    By selectOptionOutput = By.xpath("*[@id=\"withOptGroup\"]/div/div[1]/div[1]");
+    By selectTitleInput = By.xpath("//*[@id=\"selectOne\"]");
+    By groupOneActionTwo = By.xpath("//*[@id=\"react-select-2-option-0-1\"]");
+    By selectMrOption = By.xpath("//*[@id=\"selectOne\"]/div[2]//*[@id=\"react-select-3-option-0-1\"]");
+    By selectMrOptionOutput = By.xpath("//*[@id=\"selectOne\"]/div/div[1]/div[1]");
+    By selectMultiOptionInput = By.xpath("//*[@id=\"selectMenuContainer\"]/div[7]/div/div");
+    By selectMultiOptionOutput = By.xpath("//*[@id=\"selectMenuContainer\"]/div[7]/div/div/div/div[1]");
+    By selectMultiOptionBlack = By.xpath("//*[@class=\" css-11unzgr\"]//*[@id=\"react-select-4-option-1\"]");
+    By selectMultiOptionBlue = By.xpath("//*[@class=\" css-11unzgr\"]//*[@id=\"react-select-4-option-2\"]");
+
 
     public WidgetsPage(WebDriver driver) {
         this.driver = driver;
@@ -292,5 +304,44 @@ public class WidgetsPage {
     public void verifyLastItem() {
         boolean isDisplayed = helper.findElement(subSubItem1).isDisplayed();
         assertTrue(isDisplayed);
+    }
+
+    public void clickSelectMenuButton() {
+        helper.scrollDown(500);
+        helper.click(selectMenuButton);
+    }
+
+    public void clickSelectOption() {
+        helper.click(selectOptionInput);
+    }
+
+    public void selectGroupOneOptionTwo() {
+        helper.click(groupOneActionTwo);
+    }
+
+    public void clickSelectTitle() {
+        helper.scrollDown(150);
+        helper.click(selectTitleInput);
+    }
+
+    public void selectMrOption() {
+        helper.findElement(selectMrOption).click();
+    }
+
+    public void clickMultiSelectTitle() {
+        helper.scrollDown(250);
+        helper.click(selectMultiOptionInput);
+    }
+
+    public void selectBlueAndBlackOption() {
+        helper.click(selectMultiOptionBlack);
+        helper.click(selectMultiOptionBlue);
+    }
+
+    public void verifySelections() {
+        boolean result1 = helper.assertText(selectOptionInput, "Group 1, option 2");
+        boolean result2 = helper.assertText(selectMrOptionOutput, "Mr.");
+        boolean result3 = helper.containText(selectMultiOptionOutput, "Blue") && helper.containText(selectMultiOptionOutput, "Black");
+        assertTrue(result1 && result2 && result3);
     }
 }

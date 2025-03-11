@@ -179,4 +179,44 @@ public class WidgetStepsDefinitions {
     public void verifyLastItem() {
         widgetsPage.verifyLastItem();
     }
+
+    @And("Click Select Menu button")
+    public void clickSelectMenuButton() {
+        widgetsPage.clickSelectMenuButton();
+    }
+
+    @And("Click Select option")
+    public void clickSelectOption() {
+        widgetsPage.clickSelectOption();
+    }
+
+    @And("Select group one option two")
+    public void selectGroupOneOptionTwo() {
+        widgetsPage.selectGroupOneOptionTwo();
+    }
+
+    @And("Click Select title")
+    public void clickSelectTitle() {
+        widgetsPage.clickSelectTitle();
+    }
+
+    @And("Select Mr option")
+    public void selectMrOption() {
+        widgetsPage.selectMrOption();
+    }
+
+    @And("Click Multi Select title")
+    public void clickMultiSelectTitle() {
+        widgetsPage.clickMultiSelectTitle();
+    }
+
+    @And("Select Blue and Black option")
+    public void selectBlueAndBlackOption() {
+        widgetsPage.selectBlueAndBlackOption();
+    }
+
+    @Then("Verify selections")
+    public void verifySelections() {
+        widgetsPage.verifySelections();
+    }
 }

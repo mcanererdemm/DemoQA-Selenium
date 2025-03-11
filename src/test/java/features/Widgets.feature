@@ -79,3 +79,16 @@ Feature: DemoQA.com Widgets Feature Testing
     And Hover Sub items list
     And Hover sub item2
     Then Verify last item
+
+  @SelectMenu
+  Scenario: Using Widgets feature with Menu
+    Given Reach demoqa home page
+    When User click widgets link
+    And Click Select Menu button
+    And Click Select option
+    And Select group one option two
+    And Click Select title
+    And Select Mr option
+    And Click Multi Select title
+    And Select Blue and Black option
+    Then Verify selections
