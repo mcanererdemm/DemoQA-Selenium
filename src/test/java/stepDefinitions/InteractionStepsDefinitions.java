@@ -89,4 +89,29 @@ public class InteractionStepsDefinitions {
     public void verifyChangesDroppedAtAcceptTab() {
         interactionsPage.verifyChangesDroppedAtAcceptTab();
     }
+
+    @And("Click Dragabble button")
+    public void clickDragabbleButton() {
+        interactionsPage.clickDragabbleButton();
+    }
+
+    @And("Click Axis Restricted tab")
+    public void clickAxisRestrictedTab() {
+        interactionsPage.clickAxisRestrictedTab();
+    }
+
+    @And("Drag Only X item")
+    public void dragOnlyXItem() {
+        interactionsPage.dragOnlyXItem();
+    }
+
+    @And("Drag Only Y item")
+    public void dragOnlyYItem() {
+        interactionsPage.dragOnlyYItem();
+    }
+
+    @Then("Verify changes at dragabbles")
+    public void verifyChangesAtDragabbles() {
+        interactionsPage.verifyChangesAtDragabbles();
+    }
 }

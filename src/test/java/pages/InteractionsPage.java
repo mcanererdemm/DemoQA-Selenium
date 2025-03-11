@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -22,6 +23,7 @@ public class InteractionsPage {
     By sortableButton = By.xpath("//span[normalize-space()='Sortable']");
     By selectablesButton = By.xpath("//span[normalize-space()='Selectable']");
     By resizableButton = By.xpath("//span[normalize-space()='Resizable']");
+    By dragabbleButton = By.xpath("//span[normalize-space()='Dragabble']");
 
     By gridTab = By.xpath("//a[@id='demo-tab-grid']");
     By gridItemSixButton = By.xpath("//div[@class='create-grid']//div[@class='list-group-item list-group-item-action'][normalize-space()='Six']");
@@ -38,6 +40,9 @@ public class InteractionsPage {
     By acceptableDrop = By.xpath("//div[@id='acceptable']");
     By notAcceptableDrop = By.xpath("//div[@id='notAcceptable']");
     By accaptableDropHere = By.xpath("//div[@id='acceptDropContainer']//div[@id='droppable']");
+    By axisRestrictedTab = By.xpath("//a[@id='draggableExample-tab-axisRestriction']");
+    By onlyXDrag = By.xpath("//div[@id='restrictedX']");
+    By onlyYDrag = By.xpath("//div[@id='restrictedY']");
 
     public InteractionsPage(WebDriver driver) {
         this.driver = driver;
@@ -161,5 +166,46 @@ public class InteractionsPage {
     public void verifyChangesDroppedAtAcceptTab() {
         String attrOfDropHere = helper.findElement(droppableSimpleDropHere).getDomAttribute("class");
         assertEquals("drop-box ui-droppable", attrOfDropHere);
+    }
+
+    public void clickDragabbleButton() {
+        helper.scrollDown(400);
+        waiter.until(ExpectedConditions.elementToBeClickable(helper.findElement(dragabbleButton))).click();
+    }
+
+    public void clickAxisRestrictedTab() {
+        waiter.until(ExpectedConditions.elementToBeClickable(helper.findElement(axisRestrictedTab))).click();
+    }
+
+    public void dragOnlyXItem() {
+        try {
+            WebElement onlyX = waiter.until(ExpectedConditions.elementToBeClickable(helper.findElement(onlyXDrag)));
+            Thread.sleep(1000);
+            Point xStart = onlyX.getLocation();
+            helper.action.moveToElement(onlyX).clickAndHold().moveByOffset(100, 100).release().perform();
+            Point xEnd = onlyX.getLocation();
+            assertEquals(xStart.getY(), xEnd.getY());
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void dragOnlyYItem() {
+        try {
+            WebElement onlyY = waiter.until(ExpectedConditions.elementToBeClickable(helper.findElement(onlyYDrag)));
+            Thread.sleep(1000);
+            Point yStart = onlyY.getLocation();
+            helper.action.moveToElement(onlyY).clickAndHold().moveByOffset(100, 100).release().perform();
+            Point yEnd = onlyY.getLocation();
+            assertEquals(yStart.getX(), yEnd.getX());
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void verifyChangesAtDragabbles() {
     }
 }

@@ -39,3 +39,13 @@ Feature: DemoQA.com Interactions Feature Testing
     And Drag acceptable item into drop here
     And Drag not acceptable item into drop here
     Then Verify changes Dropped at Accept tab
+
+  @Dragabble
+  Scenario: Using Alert feature with New Tab button
+    Given Reach demoqa home page
+    When User click Interactions link
+    And Click Dragabble button
+    And Click Axis Restricted tab
+    And Drag Only X item
+    And Drag Only Y item
+    Then Verify changes at dragabbles
